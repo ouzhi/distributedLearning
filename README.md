@@ -1,6 +1,2 @@
 # distributedLearning
-this is a personnel learning repository, just for myself do something test.
-this is modified by dev branch!
-this is for test!
-sd 
-confilicated
+一个简单的学习git和netty，以及Java网络编程入门项目。
