@@ -33,17 +33,18 @@ public class AsyncTimeClientHandler implements Runnable,
 		writeBuffer.put(request);
 		writeBuffer.flip();
 		client.write(writeBuffer, writeBuffer, new CompletionHandler<Integer, ByteBuffer>() {
-
 			@Override
 			public void completed(Integer result, ByteBuffer attachment) {
+				System.out.println("1---------------");
 				if(attachment.hasRemaining()) {
 					client.write(attachment, attachment, this);
 				} else {
+					System.out.println("2---------------");
 					ByteBuffer readBuffer = ByteBuffer.allocate(1024);
 					client.read(readBuffer, readBuffer, new CompletionHandler<Integer, ByteBuffer>() {
-
 						@Override
 						public void completed(Integer result, ByteBuffer attachment) {
+							System.out.println("3---------------");
 							attachment.flip();
 							byte[] bytes = new byte[attachment.remaining()];
 							attachment.get(bytes);
